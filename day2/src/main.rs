@@ -1,9 +1,11 @@
+use input_utils::aoc;
+
 // Valid opcodes:
 // 1: add
 // 2: multiply
 // 99: end of program
 fn main() {
-    let contents = get_input();
+    let contents = aoc::get_input("src/input.txt");
     let codes: Vec<usize> = contents
         .trim()
         .split(',')
@@ -82,16 +84,11 @@ fn find_inputs_for_result(expected: usize, opcodes: &Vec<usize>) -> (usize, usiz
             if result == expected {
                 noun = i;
                 verb = j;
+
                 break;
             }
         }
     }
 
     return (noun, verb);
-}
-
-fn get_input() -> String {
-    use std::fs;
-
-    return fs::read_to_string("src/input.txt").unwrap();
 }

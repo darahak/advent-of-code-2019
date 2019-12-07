@@ -1,6 +1,8 @@
+use input_utils::aoc;
+
 fn main() {
-    let contents = get_input();
-    let mass_values: Vec<&str> = contents.split('\n').collect();
+    let contents = aoc::get_input("src/input.txt");
+    let mass_values: Vec<&str> = aoc::get_lines(&contents);
 
     part1(&mass_values);
     part2(&mass_values);
@@ -30,12 +32,6 @@ fn part2(mass_values: &[&str]) {
     }
 
     println!("Fuel sum #2: {}", fuel_sum);
-}
-
-fn get_input() -> String {
-    use std::fs;
-
-    return fs::read_to_string("src/input.txt").unwrap();
 }
 
 fn get_fuel_for_mass(mass: i32) -> i32 {
